@@ -94,12 +94,12 @@ foreach($vidresRead as &$line){
 						$cmd = "ffmpeg -i ".$csfile." -vf scale=150:150 -q:v 6 ".$tnpath;
 						if(!file_exists($tnpath)){
 							exec($cmd, $output, $retval);
-							$cock = "STARTING TO CONVERT";
+							$conmessage = "STARTING TO CONVERT";
 						}else {
-							$cock = $mimetype[0];
+							$conmessage = $mimetype[0];
 						}
 					}else {
-						$cock = $mimetype[0];
+						$conmessage = $mimetype[0];
 					}
 
 					if($mimetype[0] == "video"){
@@ -124,12 +124,12 @@ foreach($vidresRead as &$line){
 						$cmd = "ffmpeg -i ".$csfile." -ss 00:00:01 -frames:v 1 -s 150x150 ".$tnpath;
 						if(!file_exists($tnpath)){
 							exec($cmd, $output, $retval);
-							$cock = "STARTING TO CONVERT";
+							$conmessage = "STARTING TO CONVERT";
 						}else {
-							$cock = $mimetype[0];
+							$conmessage = $mimetype[0];
 						}
 					}else {
-						$cock = $mimetype[0];
+						$conmessage = $mimetype[0];
 					}
 
 					if($mimetype[0] != "image" && $mimetype[0] != "video"){
@@ -198,7 +198,7 @@ foreach($vidresRead as &$line){
 						}
 						$convfilesize = "$convfilesize TB";
 					}
-					echo "<tr class='filerow'><td class='fimage'><a href='".$flink."'><img src='".$tnpath."' alt='".$tn."' width='".$width."' height='".$height."'></td><td class='ffile'><a href='".$flink."'>".$file."</td><td class='ftype'>".$cock."</td><td class='fsize'>".$convfilesize."</td><td class='ftime'>".$special."</td><td class='utime'>".$uploadTime."</td></tr>";
+					echo "<tr class='filerow'><td class='fimage'><a href='".$flink."'><img src='".$tnpath."' alt='".$tn."' width='".$width."' height='".$height."'></td><td class='ffile'><a href='".$flink."'>".$file."</td><td class='ftype'>".$conmessage."</td><td class='fsize'>".$convfilesize."</td><td class='ftime'>".$special."</td><td class='utime'>".$uploadTime."</td></tr>";
 					unset($special);
 				}
 			}
@@ -208,3 +208,4 @@ foreach($vidresRead as &$line){
 	</table>
 	<table>
 </body>
+
